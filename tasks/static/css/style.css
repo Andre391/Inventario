@@ -66,3 +66,24 @@ table tbody tr:last-child td:first-child {
 table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px; /* Redondear la esquina inferior derecha */
 }
+
+/*FORMULARIO DE EDITAR*/
+.formulario-flotante {
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: rgba(211, 181, 223, 0.753); 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+    max-width: 500px; 
+    z-index: 9999; 
+}
+
+.formulario-flotante h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{elemento.nombre}}</h1>
-    {{error}}
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button>Actualizar</button>
-        <a href="{% url 'elementos' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
-
-   
+    <div class="formulario-flotante">
+        <h1>{{elemento.nombre}}</h1>
+        {{error}}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>Actualizar</button>
+            <a href="{% url 'elementos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
 {% endblock %}

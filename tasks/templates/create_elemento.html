@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Crear Elemento </h1> 
+
+    {{error}}
+    
+    <form action="/elementos/create" method="POST">
+        {% csrf_token %}
+        {{form}}
+
+        <button>
+            Guardar 
+        </button>
+        <a href="{% url 'elementos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

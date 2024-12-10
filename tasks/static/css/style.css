@@ -1,0 +1,116 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.navbar{
+    background-color: #fff;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+}
+
+.navbar-brand{
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+.boton {
+    background-color: #da9cec;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.boton:hover {
+    background-color: #a356bb;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #666777;
+    font-weight: 880;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #000;
+}
+
+@media(min-width:991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: #a356bb;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+    }
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.navbar-nav.ms-auto .nav-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hero-section {
+    background: url(https://www.marykay.es/-/media/images/mk/europe/spain/esuite/tips-and-trends/fondos-escritorio/mary-kay-fondo-escritorio-ilustracion-corazones-desktop.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh; /* Se asegura de que el fondo cubra toda la altura de la pantalla */
+    background-attachment: fixed; /* Esto hace que el fondo no se mueva con el scroll */
+    position: relative;
+    z-index: 0; /* Para que el contenido quede por encima */
+}
+
+/* Si quieres que el color de fondo siempre se aplique incluso cuando hay scroll */
+.hero-section::before {
+    background-color: rgba(0, 0, 0, 0.285); /* Color oscuro para el overlay */
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Asegura que el color esté encima de la imagen, pero debajo del contenido */
+}
+
+.hero-section .container {
+    margin-top: 80px; /* Desplaza hacia abajo el contenido dentro del bloque */
+    z-index: 2;
+    position: relative;
+}

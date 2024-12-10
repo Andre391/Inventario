@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Elementos</h1>
+<a href="{% url 'crear_elemento' %}" class="btn btn-success">
+    Crear Elemento
+</a>
+<ul>
+    {% for elemento in elementos %}
+    <li>
+        <span>{{ elemento.nombre }}</span> 
+        <span>{{ elemento.marca }}</span> 
+        <span>{{ elemento.estado }}</span> 
+        <span>{{ elemento.cantidad }}</span>
+
+        <a href="{% url 'elemento_detail' elemento.id %}" class="btn btn-primary">
+            Editar
+        </a>
+        <a href="{% url 'delete_elemento' elemento.id %}" class="btn btn-danger">
+            Eliminar
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

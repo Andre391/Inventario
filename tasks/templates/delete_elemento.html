@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>¿Estás seguro de que deseas eliminar el elemento?</h1>
+
+<p>Nombre: {{ elemento.nombre }}</p>
+<p>Marca: {{ elemento.marca }}</p>
+<p>Estado: {{ elemento.estado }}</p>
+<p>Cantidad: {{ elemento.cantidad }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+    <a href="{% url 'elementos' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

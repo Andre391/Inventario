@@ -8,6 +8,9 @@
     <link rel="icon" href="{% static 'MKfavicon.ico' %}" type="image/x-icon">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,73 +20,71 @@
     <title>Inventario Mary Kay</title>
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container">
-                <a class="navbar-brand me-auto" href="#">
-                    <img src="{% static 'MKfavicon.ico' %}" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
-                </a>
-
-                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<body class="vh-100 overflow-hidden">
+    <!-- Navegacion NavBar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(177, 76, 249, 0.493); font-family: 'Playfair Display', serif; font-size: 3rem;">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fs-4 text-white" href="/" style="font-size: 1.5rem;"> 
+                <img src="{% static 'logo.ico' %}" alt="Mary Kay Logo" style="max-height: 27px;">
+            </a>
+            <!-- Toggle Btn -->
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- SideBar -->
+            <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <!-- Sidebar Header -->
+                <div class="offcanvas-header text-dark border-bottom">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel" >Mary Kay Inventory</h5> 
+                    <button type="button" class="btn-close shadow-none border-0" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <!-- Sidebar Body -->
+                <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+                    <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3" >
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active" aria-current="page" href="/" >Home</a> 
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'elementos' %}">Elementos</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="#" >Equipos</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="#">Empleados</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="#" >Asignaciones</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <!-- Login/ Sign up / Log out -->
+                    {% if user.is_authenticated %}
+                    <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                        <a href="/logout" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                            style="background-color:  rgba(249, 76, 209, 0.493); font-size: 1.2rem;">Cerrar Sesión</a>
                     </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                            </li>
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'elementos' %}">Elementos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Equipos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Empleados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Asignaciones</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="boton" href="/logout">Cerrar Sesión</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="boton" href="/signup">Registrarse</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="boton" href="/signin">Iniciar Sesión</a>
-                            </li>
-                            {% endif %}
-                        </ul>
+                    {% else %}
+                    <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                        <a href="/signin" class="text-white text-decoration-none px-3 py-1 rounded-4 " style="background-color:  rgba(249, 76, 209, 0.493); font-size: 1.2rem;">Iniciar Sesión</a>
+                        <a href="/signup" class="text-white text-decoration-none px-3 py-1 rounded-4 "
+                            style="background-color:  rgba(249, 76, 209, 0.493); font-size: 1.2rem;">Registrarse</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
-        </nav>
-    </header>
-
-    <div class="hero-section">
-        
-        <div class="container d-flex align-items-center justify-content-center fs-1  flex-column">
-            {% block content %}
-            {% endblock %}
         </div>
-    </div>
- 
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

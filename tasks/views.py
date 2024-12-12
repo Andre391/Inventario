@@ -12,29 +12,38 @@ def home(request):
     return render(request, 'home.html')
 
 def signup(request):
-
     if request.method == 'GET':
-        return render(request, 'signup.html',{
+        return render(request, 'signup.html', {
             'form': UserCreationForm
-         })
+        })
     else:
-        if request.POST['password1'] == request.POST['password2']:
-            #Registrar Usuario
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if not username or not password1 or not password2:
+            return render(request, 'signup.html', {
+                'form': UserCreationForm,
+                "error": 'Todos los campos son obligatorios'
+            })
+            
+        if password1 == password2:
+            # Registrar Usuario
             try:
-                user = User.objects.create_user(username=request.POST['username'],
-                password=request.POST['password1'])
+                user = User.objects.create_user(username=username, password=password1)
                 user.save()
                 login(request, user)
                 return redirect('home')
             except IntegrityError:
-                return render(request, 'signup.html',{
+                return render(request, 'signup.html', {
                     'form': UserCreationForm,
-                    "error": 'Usuario existente'
+                    "error": 'El nombre de usuario ya está en uso'
                 })
-        return render(request, 'signup.html',{
-                    'form': UserCreationForm,
-                    "error": 'Las Contraseñas no coinciden'
-                })
+        else:
+            return render(request, 'signup.html', {
+                'form': UserCreationForm,
+                "error": 'Las contraseñas no coinciden'
+            })
 
 @login_required      
 def elementos(request):

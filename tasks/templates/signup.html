@@ -2,36 +2,48 @@
 
 {% block content %}
 
-<main class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4 mt-5">
-            <form method="POST" class="card card-body">
-                <h1 class="text-center">Registrarse</h1>
-                {{error}}
+<div class="container-form">
+    <div class="information">
+        <div class="info-childs">
+            <h2>Bienvenido</h2>
+            <p>Si ya tienes cuenta por favor Inicia Sesión con tus datos</p>
+            <a href="/signin">
+                <input type="button" value="Iniciar Sesión">
+            </a>
+            
+        </div>
+    </div>
+    <div class="form-information">
+        <div class="form-information-childs">
+            <h2>Crear una Cuenta </h2>
+            {{error}}
+            <div class="icons">
+                <i class='bx bxl-google'></i>
+                <i class='bx bxl-microsoft'></i>
+                <i class='bx bxl-facebook'></i>
+            </div>
+            <p>o registrate con un nombre de usuario</p>
+            <form method="POST" class="form">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="username">Usuario:</label>
+                <label for="username">
+                    <i class='bx bx-user'></i>
                     <input type="text" id="username" name="username" class="form-control"
                         placeholder="Escribe tu Usuario">
-                </div>
-                <div class="mb-3">
-                    <label for="password1">Contraseña:</label>
+                </label>
+                <label for="password1">
+                    <i class='bx bx-lock-alt'></i>
                     <input type="password" id="password1" name="password1" class="form-control"
                         placeholder="Escribe tu Contraseña">
-                </div>
-                <div class="mb-3">
-                    <label for="password2">Confirmar Contraseña:</label>
+                </label>
+
+                <label for="password2">
+                    <i class='bx bxs-lock'></i>
                     <input type="password" id="password2" name="password2" class="form-control"
                         placeholder="Confirmar Contraseña">
-                </div>
-
-                <button class="btn btn-primary">
-                    Registrarse
-                </button>
-
+                </label>
+                <input type="submit" value="Registrarse">
             </form>
         </div>
     </div>
-</main>
-
+</div>
 {% endblock %}

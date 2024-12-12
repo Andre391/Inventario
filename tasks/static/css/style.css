@@ -30,28 +30,28 @@ body::before {
 }
 
 .btn.boton {
-    background-color: #a65ec5;
+    background-color: #d3c7f3;
     color: white;
 }
 
 .btn.boton:hover {
-    background-color: #60227a;
+    background-color: #c5b3f5;
     color: white;
 }
 
 .btn.editar {
-    background-color: rgba(100, 199, 232, 0.817);
+    background-color: rgba(106, 202, 234, 0.763);
 }
 .btn.editar:hover {
-    background-color: rgba(81, 189, 225, 0.817);
+    background-color: rgba(90, 186, 218, 0.817);
 }
 
 .btn.eliminar {
-    background-color: rgba(232, 100, 100, 0.817);
+    background-color: rgba(228, 112, 112, 0.817);
 }
 
 .btn.eliminar:hover {
-    background-color: rgba(230, 77, 77, 0.817);
+    background-color: rgba(227, 94, 94, 0.817);
 }
 
 table {
@@ -67,23 +67,256 @@ table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px; /* Redondear la esquina inferior derecha */
 }
 
-/*FORMULARIO DE EDITAR*/
-.formulario-flotante {
-    position: fixed;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: rgba(211, 181, 223, 0.753); 
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    width: 100%;
-    max-width: 500px; 
-    z-index: 9999; 
+
+/*FORMULARIO DE REGISTRO*/
+.container-form{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgb(0, 0, 0,.1);
+    max-width: 900px;
+    transition: all 1s ease;
+    margin: 15px auto; 
+    border:solid thin #d3c7f3;
 }
 
-.formulario-flotante h1 {
+.information{
+    width: 40%;
+    display: flex;
+    align-items: center;
     text-align: center;
-    margin-bottom: 20px;
+    background-color: #d3c7f3;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.info-childs{
+    width: 100%;
+    padding: 0 30px;
+}
+
+.info-childs h2{
+    font-size:2.5rem;
+    color: #333;
+}
+.info-childs p{
+    margin: 15px 0;
+    color: #555;
+}
+.info-childs input{
+    background-color: transparent;
+    outline: none;
+    border: solid 2px rgba(241, 156, 222, 0.726);
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.info-childs input:hover{
+    background-color:rgba(241, 156, 222, 0.726);
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+}
+
+.form-information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-information-childs{
+    padding: 0 30px;
+}
+.form-information-childs h2{
+    color: #333;
+    font-size: 2rem;
+}
+.form-information-childs p{
+    color: #555;
+}
+
+.icons{
+    margin: 15px 0 ;
+}
+.icons i{
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #919191;
+    border: solid thin #d3c7f3;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+}
+
+.icons i:hover{
+    background-color: #d3c7f3;
+    color: #fff;
+}
+
+.form{
+    margin: 30px 0 0 0;
+}
+.form label{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+}
+.form label input{
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+.form label i{
+    color: #a7a7a7;
+}
+
+.form input[type="submit"]{
+    background-color: #d3c7f3;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+}
+.form input[type="submit"]:hover{
+    background-color: #c1b1ed;
+}
+
+/*RESPONSIVE FORM*/
+@media screen and (max-width:750px) {
+    html{
+        font-size: 12px;
+    }   
+}
+
+@media screen and (max-width:580px) {
+    html{
+        font-size: 10px;
+    }   
+    .container-form{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .information{
+        width:100% ;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+
+    }
+    .form-information{
+        width:100% ;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px;
+    }
+}
+
+
+/*FORMULARIO DE EDITAR Y CREAR*/
+.formulario-flotante {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #d3c7f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px; 
+}
+
+.input-icon-container {
+    position: relative;
+}
+
+.input-icon-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #919191;
+}
+
+.input-icon-container input,
+.input-icon-container select {
+    padding-left: 35px; 
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+/*BOTONES FORMULARIO DE EDITAR */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-container input[type="submit"],
+.button-container .btn {
+    width: auto; 
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+
+.button-container .btn-secondary {
+    background-color: #f3c7d1; 
+    color: #000000;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+}
+
+.button-container .btn-secondary:hover {
+    background-color: #f09696; 
+}
+
+/* Estilo para el botón "Actualizar" */
+input[type="submit"] {
+    background-color: rgba(241, 156, 222, 0.726); 
+    color: #000000;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(236, 135, 214, 0.726); /* Cambio al pasar el cursor */
 }
 

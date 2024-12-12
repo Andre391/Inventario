@@ -27,6 +27,7 @@
             <div class="input-icon-container">
                 <i class='bx bxs-hand-right'></i>
                 <select id="estado" name="estado" class="form-control">
+                    <option value="excelente" {% if elemento.estado == 'excelente' %}selected{% endif %}>Excelente</option>
                     <option value="bueno" {% if elemento.estado == 'bueno' %}selected{% endif %}>Bueno</option>
                     <option value="no_disponible" {% if elemento.estado == 'no_disponible' %}selected{% endif %}>No Disponible</option>
                     <option value="malo" {% if elemento.estado == 'malo' %}selected{% endif %}>Malo</option>

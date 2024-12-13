@@ -15,6 +15,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Inventario Mary Kay</title>
 </head>
 
@@ -71,7 +73,7 @@
                     <!-- Login/ Sign up / Log out -->
                     {% if user.is_authenticated %}
                     <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                        <a href="/logout" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                        <a href="{% url 'logout_confirm' %}" class="text-white text-decoration-none px-3 py-1 rounded-4"
                             style="background-color:  rgba(241, 156, 222, 0.726); font-size: 1.2rem;">Cerrar Sesión</a>
                     </div>
                     {% else %}

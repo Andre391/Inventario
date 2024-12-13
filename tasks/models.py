@@ -12,6 +12,18 @@ class Elemento(models.Model):
     def __str__(self):
         return f'{self.nombre} - de {self.user}'
 
+class Equipo(models.Model):
+    serial = models.CharField(max_length=100, primary_key=True) 
+    marca = models.CharField(max_length=50)
+    ubicacion = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50)
+    tipo = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f'{self.serial} - de {self.user}'
+
+
 class Asignacion(models.Model):
     empleado = models.ForeignKey(User, on_delete=models.CASCADE)  
     elementos = models.ManyToManyField(Elemento) 

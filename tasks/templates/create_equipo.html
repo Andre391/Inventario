@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="formulario-flotante">
+    <h1>Crear Equipo</h1>
+    {{error}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="serial">Serial:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-rename' ></i>
+                <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial del Equipo">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="marca">Marca:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-bookmark'></i>
+                <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca del equipo">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ubicacion">Ubicacion:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-bookmark'></i>
+                <select id="ubicacion" name="ubicacion" class="form-control">
+                    <option value="bodega" {% if equipo.estado == 'bodega' %}selected{% endif %}>Bodega</option>
+                    <option value="oficina" {% if equipo.estado == 'oficina' %}selected{% endif %}>Oficina</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <div class="input-icon-container">
+                <i class='bx bxs-hand-right'></i>
+                <select id="estado" name="estado" class="form-control">
+                    <option value="excelente" {% if elemento.estado == 'excelente' %}selected{% endif %}>Excelente</option>
+                    <option value="bueno" {% if elemento.estado == 'bueno' %}selected{% endif %}>Bueno</option>
+                    <option value="regular" {% if elemento.estado == 'regular' %}selected{% endif %}>Regular</option>
+                    <option value="no_disponible" {% if elemento.estado == 'no_disponible' %}selected{% endif %}>No Disponible</option>
+                    <option value="malo" {% if elemento.estado == 'malo' %}selected{% endif %}>Malo</option>
+                </select>
+            </div>
+        </div>
+        
+
+        <label for="tipo">Tipo:</label>
+        <div class="input-icon-container">
+            <i class='bx bx-buildings' ></i>
+            <select id="estado" name="estado" class="form-control">
+                <option value="escritorio" {% if equipo.estado == 'escritorio' %}selected{% endif %}>Escritorio</option>
+                <option value="portatil" {% if equipo.estado == 'portatil' %}selected{% endif %}>Portátil</option>
+            </select>
+        </div>
+        
+        <div class="button-container">
+            <a href="{% url 'equipos' %}" class="btn btn-secondary">Cancelar</a>
+            <input type="submit" value="Guardar">
+        </div>
+    </form>
+</div>
+{% endblock %}

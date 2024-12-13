@@ -3,14 +3,14 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout ,authenticate
 from django.db import IntegrityError
-from .forms import ElementoForm
-from .models import Elemento
+from .forms import ElementoForm, EquipoForm
+from .models import Elemento, Equipo
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
-
+# REGISTRARSE
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {
@@ -45,6 +45,7 @@ def signup(request):
                 "error": 'Las contraseñas no coinciden'
             })
 
+#ELEMENTOS 
 @login_required      
 def elementos(request):
     elementos = Elemento.objects.all()
@@ -101,6 +102,7 @@ def delete_elemento(request, elemento_id):
         return redirect('elementos')  
     return render(request, 'delete_elemento.html', {'elemento': elemento})
 
+#CERRAR SESIÓN
 @login_required
 def logout_confirm(request):
     if request.method == 'POST':
@@ -124,3 +126,61 @@ def signin(request):
             login(request,user)
             return redirect('home')
 
+#EQUIPOS
+@login_required      
+def equipos(request):
+    equipos = Equipo.objects.all()
+    
+    return render(request, 'equipos.html',{'equipos':equipos})
+
+
+@login_required
+def equipo_detail(request,serial):
+    if request.method == 'GET':
+        equipo = get_object_or_404(Equipo, pk=serial)
+        form = EquipoForm(instance=equipo)
+        return render(request,'equipo_detail.html',{
+            'equipo':equipo,
+            'form': form
+        })
+    else:
+       try:
+            equipo = get_object_or_404(Equipo,pk=serial)
+            form = EquipoForm(request.POST, instance=equipo)
+            form.save()
+            return redirect('equipos')
+       except ValueError:
+           return render(request,'equipo_detail.html',{
+                    'equipo':equipo,
+                    'form': form,
+                    'error': 'Error al Actualizar Registro'
+                })
+@login_required
+def crear_equipo(request):
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        serial = request.POST.get('serial')
+        marca = request.POST.get('marca')
+        ubicacion = request.POST.get('ubicacion')
+        estado = request.POST.get('estado')
+        tipo = request.POST.get('tipo')
+        
+        # Verifica si el equipo con el serial ya existe (para evitar duplicados)
+        if Equipo.objects.filter(serial=serial).exists():
+            return render(request, 'crear_equipo.html', {'error': 'Ya existe un equipo con ese serial.'})
+        
+        # Crea una nueva instancia del equipo y la guarda
+        equipo = Equipo(
+            serial=serial,
+            marca=marca,
+            ubicacion=ubicacion,
+            estado=estado,
+            tipo=int(tipo),  # Convertimos el tipo a un número entero
+            user=request.user  # Asumimos que el usuario actual es el que crea el equipo
+        )
+        equipo.save()
+
+        # Redirige a la página de equipos o donde desees
+        return redirect('equipos')  # Asegúrate de que la URL 'equipos' esté configurada correctamente
+
+    return render(request, 'crear_equipo.html') 

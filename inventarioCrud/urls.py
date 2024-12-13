@@ -22,10 +22,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'),
     path('signup/',views.signup, name='signup'),
+    #ELEMENTOS
     path('elementos/', views.elementos, name='elementos'),
     path('elementos/create',views.crear_elemento, name='crear_elemento'),
     path('elementos/<int:elemento_id>/',views.elemento_detail, name='elemento_detail'),
     path('elementos/<int:elemento_id>/delete',views.delete_elemento, name='delete_elemento'),
+    
+    #EQUIPOS
+    path('equipos/', views.equipos, name='equipos'),
+    path('equipos/create',views.crear_equipo, name='crear_equipo'),
+    path('equipos/<str:serial>/',views.elemento_detail, name='equipo_detail'),
+    path('equipos/<str:serial>/delete',views.delete_elemento, name='delete_equipo'),
+    
+    
     path('logout/', views.logout_confirm, name='logout_confirm'),
     path('signin/', views.signin, name='signin'), 
 ]

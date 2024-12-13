@@ -26,8 +26,6 @@ urlpatterns = [
     path('elementos/create',views.crear_elemento, name='crear_elemento'),
     path('elementos/<int:elemento_id>/',views.elemento_detail, name='elemento_detail'),
     path('elementos/<int:elemento_id>/delete',views.delete_elemento, name='delete_elemento'),
-    path('logout/', views.cerrar_sesion, name='logout'),
-    path('signin/', views.signin, name='signin'),
-    
-    
+    path('logout/', views.logout_confirm, name='logout_confirm'),
+    path('signin/', views.signin, name='signin'), 
 ]

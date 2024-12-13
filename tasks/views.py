@@ -96,18 +96,17 @@ def elemento_detail(request,elemento_id):
 def delete_elemento(request, elemento_id):
     elemento = get_object_or_404(Elemento, pk=elemento_id)
     
-    if request.method == 'POST':  # Si la solicitud es POST, eliminamos el elemento
+    if request.method == 'POST':  
         elemento.delete()
-        return redirect('elementos')  # Redirigimos a la lista de elementos
-
-    # Si la solicitud es GET, mostramos una página de confirmación
+        return redirect('elementos')  
     return render(request, 'delete_elemento.html', {'elemento': elemento})
 
 @login_required
-def cerrar_sesion(request):
-    logout(request)
-    return redirect('home')
-
+def logout_confirm(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home') 
+    return render(request, 'logout_confirm.html')
     
 def signin(request):
     if request.method == 'GET':

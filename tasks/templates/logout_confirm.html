@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+    // Mostrar el cuadro de confirmación de SweetAlert2
+    Swal.fire({
+    title: '¿Estás seguro?',
+    text: "Una vez que cierres sesión, tendrás que iniciar nuevamente.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: 'rgba(106, 202, 234, 0.763)',
+    cancelButtonColor: 'rgba(228, 112, 112, 0.817)',
+    confirmButtonText: 'Sí, cerrar sesión',
+    cancelButtonText: 'Cancelar'
+}).then((result) => {
+    if (result.isConfirmed) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '{% url "logout_confirm" %}'; 
+        const csrfToken = document.createElement('input');
+        csrfToken.type = 'hidden';
+        csrfToken.name = 'csrfmiddlewaretoken';
+        csrfToken.value = '{{ csrf_token }}';
+        form.appendChild(csrfToken);
+        document.body.appendChild(form);
+        form.submit();
+    } else {
+        window.location.href = '{% url "home" %}';
+    }
+});
+
+</script>
+{% endblock %}

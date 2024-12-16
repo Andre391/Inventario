@@ -28,10 +28,10 @@
                     <td>{{ equipo.estado }}</td>
                     <td>{{ equipo.tipo }}</td>
                     <td>
-                        <a href="{% url 'equipo_detail' elemento.id %}" class="btn editar btn-sm rounded-pill">
+                        <a href="{% url 'equipo_detail' equipo.serial %}" class="btn editar btn-sm rounded-pill">
                             <i class='bx bx-pencil'></i> Editar
                         </a>
-                        <a href="{% url 'delete_equipo' elemento.id %}" class="btn eliminar btn-sm rounded-pill">
+                        <a href="{% url 'delete_equipo' equipo.serial %}" class="btn eliminar btn-sm rounded-pill">
                             <i class='bx bx-trash'></i> Eliminar
                         </a>
                     </td>

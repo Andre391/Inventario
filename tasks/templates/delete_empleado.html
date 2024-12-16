@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    Swal.fire({
+        title: '¿Estás seguro de eliminar el empleado con nombre:  "{{empleado.nombre}}"?',
+        text: "Una vez eliminado, no podrás recuperar este empleado.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'rgba(228, 112, 112, 0.817)',
+        cancelButtonColor: 'rgba(106, 202, 234, 0.763)',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{% url "delete_empleado" empleado.codigo %}';
+            const csrfToken = document.createElement('input');
+            csrfToken.type = 'hidden';
+            csrfToken.name = 'csrfmiddlewaretoken';
+            csrfToken.value = '{{ csrf_token }}';
+            form.appendChild(csrfToken);
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            window.location.href = '{% url "empleados" %}';
+        }
+    });
+</script>
+
+{% endblock %}

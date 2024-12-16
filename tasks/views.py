@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout ,authenticate
 from django.db import IntegrityError
-from .forms import ElementoForm, EquipoForm
-from .models import Elemento, Equipo
+from .forms import ElementoForm, EquipoForm, EmpleadoForm
+from .models import Elemento, Equipo , Empleado
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -140,7 +140,7 @@ def equipo_detail(request,serial):
         equipo = get_object_or_404(Equipo, pk=serial)
         form = EquipoForm(instance=equipo)
         return render(request,'equipo_detail.html',{
-            'equipo':equipo,
+            'equipo': equipo,
             'form': form
         })
     else:
@@ -151,7 +151,7 @@ def equipo_detail(request,serial):
             return redirect('equipos')
        except ValueError:
            return render(request,'equipo_detail.html',{
-                    'equipo':equipo,
+                    'equipo': equipo,
                     'form': form,
                     'error': 'Error al Actualizar Registro'
                 })
@@ -165,22 +165,94 @@ def crear_equipo(request):
         estado = request.POST.get('estado')
         tipo = request.POST.get('tipo')
         
-        # Verifica si el equipo con el serial ya existe (para evitar duplicados)
+        # Verifica si el equipo con el serial ya existe
         if Equipo.objects.filter(serial=serial).exists():
-            return render(request, 'crear_equipo.html', {'error': 'Ya existe un equipo con ese serial.'})
+            return render(request, 'create_equipo.html', {'error': 'Ya existe un equipo con ese serial.'})
         
-        # Crea una nueva instancia del equipo y la guarda
+        # Crea una nueva instancia y la guarda
         equipo = Equipo(
             serial=serial,
             marca=marca,
             ubicacion=ubicacion,
             estado=estado,
-            tipo=int(tipo),  # Convertimos el tipo a un número entero
-            user=request.user  # Asumimos que el usuario actual es el que crea el equipo
+            tipo=tipo,  
         )
         equipo.save()
 
-        # Redirige a la página de equipos o donde desees
-        return redirect('equipos')  # Asegúrate de que la URL 'equipos' esté configurada correctamente
+        # Redirige a la página 
+        return redirect('equipos') 
 
-    return render(request, 'crear_equipo.html') 
+    return render(request, 'create_equipo.html') 
+
+@login_required          
+def delete_equipo(request, serial):
+    equipo = get_object_or_404(Equipo, pk=serial)
+    
+    if request.method == 'POST':  
+        equipo.delete()
+        return redirect('equipos')  
+    return render(request, 'delete_equipo.html', {'equipo': equipo})
+
+#EMPLEADOS
+@login_required      
+def empleados(request):
+    empleados = Empleado.objects.all()
+    
+    return render(request, 'empleados.html',{'empleados': empleados})
+
+
+@login_required
+def empleado_detail(request,codigo):
+    if request.method == 'GET':
+        empleado = get_object_or_404(Empleado, pk=codigo)
+        form = EmpleadoForm(instance=empleado)
+        return render(request,'empleado_detail.html',{
+            'empleado': empleado,
+            'form': form
+        })
+    else:
+       try:
+            empleado = get_object_or_404(Empleado,pk=codigo)
+            form = EmpleadoForm(request.POST, instance=empleado)
+            form.save()
+            return redirect('empleados')
+       except ValueError:
+           return render(request,'empleado_detail.html',{
+                    'empleado': empleado,
+                    'form': form,
+                    'error': 'Error al Actualizar Registro'
+                })
+@login_required
+def crear_empleado(request):
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        codigo = request.POST.get('codigo')
+        nombre = request.POST.get('nombre')
+        cargo = request.POST.get('cargo')
+
+        
+        if Empleado.objects.filter(codigo=codigo).exists():
+            return render(request, 'create_empleado.html', {'error': 'Ya existe un empleado con ese codigo.'})
+        
+        # Crea una nueva instancia y la guarda
+        empleado = Empleado(
+            codigo=codigo,
+            nombre=nombre,
+            cargo=cargo 
+        )
+        empleado.save()
+
+        # Redirige a la página 
+        return redirect('empleados') 
+
+    return render(request, 'create_empleado.html') 
+
+@login_required          
+def delete_empleado(request, codigo):
+    empleado = get_object_or_404(Empleado, pk=codigo)
+    
+    if request.method == 'POST':  
+        empleado.delete()
+        return redirect('empleados')  
+    return render(request, 'delete_empleado.html', {'empleado': empleado})
+

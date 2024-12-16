@@ -31,8 +31,14 @@ urlpatterns = [
     #EQUIPOS
     path('equipos/', views.equipos, name='equipos'),
     path('equipos/create',views.crear_equipo, name='crear_equipo'),
-    path('equipos/<str:serial>/',views.elemento_detail, name='equipo_detail'),
-    path('equipos/<str:serial>/delete',views.delete_elemento, name='delete_equipo'),
+    path('equipos/<str:serial>/',views.equipo_detail, name='equipo_detail'),
+    path('equipos/<str:serial>/delete',views.delete_equipo, name='delete_equipo'),
+    
+    #EMPLEADOS
+    path('empleados/', views.empleados, name='empleados'),
+    path('empleados/create',views.crear_empleado, name='crear_empleado'),
+    path('empleados/<int:codigo>/',views.empleado_detail, name='empleado_detail'),
+    path('empleados/<int:codigo>/delete',views.delete_empleado, name='delete_empleado'),
     
     
     path('logout/', views.logout_confirm, name='logout_confirm'),

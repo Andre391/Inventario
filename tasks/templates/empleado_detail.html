@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="formulario-flotante">
+    <h1>Empleado a Editar</h1>
+    {{ error }}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="codigo">Codigo:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-rename' ></i>
+                <input type="text" id="codgio" name="codigo" class="form-control" value="{{ empleado.codigo }}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-bookmark'></i>
+                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ empleado.nombre }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cargo">Cargo:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-bookmark'></i>
+                <input type="text" id="cargo" name="cargo" class="form-control" value="{{ empleado.cargo }}">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="{% url 'empleados' %}" class="btn btn-secondary">Cancelar</a>
+            <input type="submit" value="Actualizar">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -34,6 +34,7 @@ class Empleado(models.Model):
 class Asignacion(models.Model):
     empleado = models.ForeignKey(User, on_delete=models.CASCADE)  
     elementos = models.ManyToManyField(Elemento) 
+    computador = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return f'Asignación de {self.empleado.username} a {self.elementos.count()} elementos'

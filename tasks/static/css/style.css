@@ -1,5 +1,5 @@
 body {
-    background: url(https://www.marykay.es/-/media/images/mk/europe/spain/esuite/tips-and-trends/fondos-escritorio/mary-kay-fondo-escritorio-ilustracion-corazones-desktop.jpg) rgba(0, 0, 0, 0.5); 
+    background: url(https://th.bing.com/th/id/R.4cdd6aa38c15a5516fcd970500797297?rik=YHQkMCQ8siGhLg&pid=ImgRaw&r=0) rgba(0, 0, 0, 0.5); 
     background-blend-mode: multiply;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,6 +22,25 @@ body::before {
         backdrop-filter: blur(10px);
     }
 }
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.scrollable-content {
+    max-height: 80vh; /* Ajusta la altura máxima */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    width: 100%;
+}
+
 
 .sidebar .btn-close {
     font-size: 1.2rem; 

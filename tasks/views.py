@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout ,authenticate
 from django.db import IntegrityError
-from .forms import ElementoForm, EquipoForm, EmpleadoForm
-from .models import Elemento, Equipo , Empleado
+from .forms import ElementoForm, EquipoForm, EmpleadoForm, AsignacionForm
+from .models import Elemento, Equipo , Empleado, Asignacion
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -255,4 +255,69 @@ def delete_empleado(request, codigo):
         empleado.delete()
         return redirect('empleados')  
     return render(request, 'delete_empleado.html', {'empleado': empleado})
+
+#ASIGNACIONES
+@login_required
+def asignaciones(request):
+    asignaciones = Asignacion.objects.all()
+    return render(request, 'asignaciones.html', {'asignaciones': asignaciones})
+
+@login_required
+def asignacion_detail(request, pk):
+    asignacion = get_object_or_404(Asignacion, pk=pk)
+    
+    if request.method == 'POST':
+        form = AsignacionForm(request.POST, instance=asignacion)
+        if form.is_valid():
+            form.save()
+            return redirect('asignaciones')
+        else:
+            return render(request, 'asignacion_detail.html', {
+                'asignacion': asignacion,
+                'form': form,
+                'error': 'Error al actualizar la asignación'
+            })
+    else:
+        form = AsignacionForm(instance=asignacion)
+        return render(request, 'asignacion_detail.html', {
+            'asignacion': asignacion,
+            'form': form
+        })
+
+def crear_asignacion(request):
+    if request.method == 'POST':
+        # Obtén los valores enviados por el formulario
+        empleado_id = request.POST.get('empleado')
+        elementos_ids = request.POST.getlist('elementos')  # Lista de ids de los elementos seleccionados
+        computador = request.POST.get('computador')
+
+        # Obtén el empleado y los elementos correspondientes
+        empleado = Empleado.objects.get(codigo=empleado_id)
+        elementos = Elemento.objects.filter(id__in=elementos_ids)
+
+        # Crea la asignación
+        asignacion = Asignacion.objects.create(
+            empleado=empleado,
+            computador=computador
+        )
+        asignacion.elementos.set(elementos)  # Establece la relación ManyToMany
+
+        return redirect('asignaciones')
+    
+    # Si la solicitud es GET, pasamos los empleados y elementos al contexto
+    empleados = Empleado.objects.all()
+    elementos = Elemento.objects.all()
+    return render(request, 'create_asignacion.html', {'empleados': empleados, 'elementos': elementos})
+
+
+@login_required
+def delete_asignacion(request, pk):
+    asignacion = get_object_or_404(Asignacion, pk=pk)
+    
+    if request.method == 'POST':
+        asignacion.delete()
+        return redirect('asignaciones')
+    
+    return render(request, 'delete_asignacion.html', {'asignacion': asignacion})
+
 

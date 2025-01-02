@@ -1,0 +1,54 @@
+<!-- create_asignacion.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="formulario-flotante">
+  <h1>Crear Asignación</h1>
+  {% if error %}
+  <p style="color: red; margin-top: 10px;">{{ error }}</p>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="empleado">Empleado:</label>
+      <div class="input-icon-container">
+        <i class='bx bx-rename'></i>
+        <select name="empleado" id="empleado">
+          <!-- Opciones para empleados -->
+          {% for empleado in empleados %}
+              <option value="{{ empleado.codigo }}">{{ empleado.nombre }}</option>
+          {% endfor %}
+      </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="elementos">Elementos:</label>
+      <div class="input-icon-container">
+        <i class='bx bx-rename'></i>
+        <select name="elementos" id="elementos" multiple size="10" class="custom-select">
+          <!-- Opciones para elementos -->
+          {% for elemento in elementos %}
+              <option value="{{ elemento.id }}">{{ elemento.nombre }}</option>
+          {% endfor %}
+        </select>
+        
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="computador">Computador:</label>
+      <div class="input-icon-container">
+        <i class='bx bx-rename'></i>
+        <input type="text" name="computador" id="computador">
+      </div>
+    </div>
+
+    <div class="button-container">
+      <a href="{% url 'asignaciones' %}" class="btn btn-secondary">Cancelar</a>
+      <input type="submit" value="Guardar">
+    </div>
+  </form>
+</div>
+{% endblock %}

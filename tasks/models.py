@@ -10,7 +10,7 @@ class Elemento(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f'{self.nombre} - de {self.user}'
+        return f'{self.nombre}'
 
 class Equipo(models.Model):
     serial = models.CharField(max_length=100, primary_key=True) 
@@ -29,12 +29,14 @@ class Empleado(models.Model):
 
     
     def __str__(self):
-        return f'{self.codigo}'
+        return f'{self.nombre}'
 
 class Asignacion(models.Model):
-    empleado = models.ForeignKey(User, on_delete=models.CASCADE)  
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)  
     elementos = models.ManyToManyField(Elemento) 
     computador = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return f'Asignación de {self.empleado.username} a {self.elementos.count()} elementos'
+        # Devolver los nombres de los elementos en lugar de la representación completa
+        nombres_elementos = ', '.join([elemento.nombre for elemento in self.elementos.all()])
+        return f'Asignación de {self.empleado.nombre} a {nombres_elementos}'

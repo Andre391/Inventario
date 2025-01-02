@@ -282,8 +282,7 @@ table tbody tr:last-child td:last-child {
     color: #919191;
 }
 
-.input-icon-container input,
-.input-icon-container select {
+.input-icon-container input {
     padding-left: 35px; 
     width: 100%;
     height: 40px;
@@ -339,3 +338,50 @@ input[type="submit"]:hover {
     background-color: rgba(236, 135, 214, 0.726); /* Cambio al pasar el cursor */
 }
 
+/* FORMULARIO DE CREAR ASIGNACIÓN*/
+
+/* Contenedor común para los iconos */
+.input-icon-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .input-icon-container select {
+    width: 100%; /* Ancho completo para que se ajuste al contenedor */
+    height: 40px; /* Altura común */
+    padding-left: 35px; /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+    appearance: none; /* Opcional: Elimina el estilo predeterminado del select */
+  }
+  
+  /* Si quieres hacer el dropdown más grande */
+  .input-icon-container select.custom-select {
+    height: 100px; /* Establece una altura más grande para el dropdown */
+  }
+  
+  /* Estilos para los input */
+  .input-icon-container input {
+    width: 100%;
+    height: 40px; /* Altura igual al select */
+    padding-left: 35px; /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+  }
+  
+  /* Estilo del icono dentro del contenedor */
+  .input-icon-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px; 
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #4343437e; 
+  }
+  

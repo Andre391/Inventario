@@ -1,0 +1,18 @@
+<!-- asignacion_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Asignación</h1>
+  
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
+  </form>
+
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+  
+  <a href="{% url 'asignaciones' %}">Volver a la lista de asignaciones</a>
+{% endblock %}

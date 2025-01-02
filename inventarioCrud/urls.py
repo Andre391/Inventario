@@ -39,6 +39,12 @@ urlpatterns = [
     path('empleados/create',views.crear_empleado, name='crear_empleado'),
     path('empleados/<int:codigo>/',views.empleado_detail, name='empleado_detail'),
     path('empleados/<int:codigo>/delete',views.delete_empleado, name='delete_empleado'),
+
+    #ASIGNACIONES
+    path('asignaciones/', views.asignaciones, name='asignaciones'),
+    path('asignaciones/create',views.crear_asignacion, name='crear_asignacion'),
+    path('asignaciones/<int:pk>/',views.asignacion_detail, name='asignacion_detail'),
+    path('asignaciones/<int:pk>/delete',views.delete_asignacion, name='delete_asignacion'),
     
     
     path('logout/', views.logout_confirm, name='logout_confirm'),

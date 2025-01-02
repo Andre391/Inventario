@@ -9,7 +9,7 @@
         <div class="form-group">
             <label for="serial">Serial:</label>
             <div class="input-icon-container">
-                <i class='bx bx-rename' ></i>
+                <i class='bx bx-terminal'></i>
                 <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial del Equipo">
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="ubicacion">Ubicacion:</label>
             <div class="input-icon-container">
-                <i class='bx bx-bookmark'></i>
+                <i class='bx bx-map'></i>
                 <select id="ubicacion" name="ubicacion" class="form-control">
                     <option value="bodega" {% if equipo.estado == 'bodega' %}selected{% endif %}>Bodega</option>
                     <option value="oficina" {% if equipo.estado == 'oficina' %}selected{% endif %}>Oficina</option>

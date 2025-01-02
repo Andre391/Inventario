@@ -264,26 +264,37 @@ def asignaciones(request):
 
 @login_required
 def asignacion_detail(request, pk):
+    # Obtén la asignación específica
     asignacion = get_object_or_404(Asignacion, pk=pk)
-    
+
     if request.method == 'POST':
+        # Si la solicitud es POST, procesamos el formulario
         form = AsignacionForm(request.POST, instance=asignacion)
+        
         if form.is_valid():
-            form.save()
-            return redirect('asignaciones')
+            # Guardamos la asignación con los nuevos elementos seleccionados
+            form.save()  # Django maneja la relación ManyToMany por ti
+            return redirect('asignaciones')  # Redirige a la lista de asignaciones
         else:
+            # Si el formulario no es válido, mostramos el error
             return render(request, 'asignacion_detail.html', {
-                'asignacion': asignacion,
                 'form': form,
-                'error': 'Error al actualizar la asignación'
+                'asignacion': asignacion,
+                'error': 'Hubo un error al intentar actualizar la asignación'
             })
     else:
+        # Si la solicitud es GET, pre-poblamos el formulario con la asignación actual
         form = AsignacionForm(instance=asignacion)
-        return render(request, 'asignacion_detail.html', {
-            'asignacion': asignacion,
-            'form': form
-        })
+        empleados = Empleado.objects.all()
+        elementos = Elemento.objects.all()
 
+        return render(request, 'asignacion_detail.html', {
+            'form': form,
+            'asignacion': asignacion,
+            'empleados': empleados,
+            'elementos': elementos,
+        })
+@login_required
 def crear_asignacion(request):
     if request.method == 'POST':
         # Obtén los valores enviados por el formulario

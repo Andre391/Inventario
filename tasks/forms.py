@@ -17,29 +17,19 @@ class EmpleadoForm(ModelForm):
         fields = ['codigo','nombre','cargo'] 
 
 class AsignacionForm(ModelForm):
-
     empleado = ModelChoiceField(
-        queryset=Empleado.objects.all(), 
-        empty_label="Seleccione un empleado",  
-        label="Empleado",  
-        widget=Select(attrs={'class': 'form-control'}) 
+        queryset=Empleado.objects.all(),
+        empty_label="Seleccione un empleado",
+        label="Empleado",
+        widget=Select(attrs={'class': 'form-control'})
     )
-
+    
     elementos = ModelMultipleChoiceField(
         queryset=Elemento.objects.all(),
-        widget=CheckboxSelectMultiple() 
+        widget= SelectMultiple(attrs={'class': 'form-select form-select-lg elementos_class'}),
+        required=False
     )
-
 
     class Meta:
         model = Asignacion
         fields = ['empleado', 'elementos', 'computador']
-
-    def clean_elementos(self):
-        # Aquí puedes manipular los datos de los elementos si es necesario
-        elementos = self.cleaned_data.get('elementos')
-        # Si necesitas mostrar los elementos como texto en lugar de como objetos,
-        # puedes convertirlos en un string.
-        if elementos:
-            return ', '.join([str(elemento) for elemento in elementos])
-        return ''

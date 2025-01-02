@@ -357,7 +357,18 @@ input[type="submit"]:hover {
     box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
     appearance: none; /* Opcional: Elimina el estilo predeterminado del select */
   }
-  
+  .input-icon-container .elementos_class {
+    width: 100%; /* Ancho completo para que se ajuste al contenedor */
+    height: 100px; /* Altura común */
+    padding-left: 35px; /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+    appearance: none; /* Opcional: Elimina el estilo predeterminado del select */
+  }
+
   /* Si quieres hacer el dropdown más grande */
   .input-icon-container select.custom-select {
     height: 100px; /* Establece una altura más grande para el dropdown */

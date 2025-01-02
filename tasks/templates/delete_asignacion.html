@@ -1,13 +1,37 @@
-<!-- delete_asignacion.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Eliminar Asignación</h1>
-  <p>¿Estás seguro de que deseas eliminar la asignación de {{ asignacion.empleado.nombre }}?</p>
-  
-  <form method="POST">
-    {% csrf_token %}
-    <button type="submit">Eliminar</button>
-  </form>
-  <a href="{% url 'asignaciones' %}">Cancelar</a>
+<script>
+    Swal.fire({
+        title: '¿Estás seguro de eliminar la asignación de "{{asignacion.empleado.nombre}}" ?',
+        text: "Una vez eliminada, no podrás recuperar esta asignación.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'rgba(228, 112, 112, 0.817)',  /* Color de confirmación */
+        cancelButtonColor: 'rgba(106, 202, 234, 0.763)',  /* Color de cancelación */
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Crear un formulario dinámicamente
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{% url "delete_asignacion" asignacion.id %}';  // URL de la vista de eliminación de asignación
+            
+            // Agregar CSRF Token
+            const csrfToken = document.createElement('input');
+            csrfToken.type = 'hidden';
+            csrfToken.name = 'csrfmiddlewaretoken';
+            csrfToken.value = '{{ csrf_token }}';
+            form.appendChild(csrfToken);
+
+            // Enviar el formulario
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            // Si se cancela, redirigir a la página de asignaciones
+            window.location.href = '{% url "asignaciones" %}';
+        }
+    });
+</script>
 {% endblock %}

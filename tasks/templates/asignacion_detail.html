@@ -1,18 +1,45 @@
-<!-- asignacion_detail.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Asignación</h1>
-  
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
-  </form>
+<div class="formulario-flotante">
+  <h1>Editar Asignación</h1>
 
   {% if error %}
-    <p style="color: red;">{{ error }}</p>
+    <p style="color: red; margin-top: 10px;">{{ error }}</p>
   {% endif %}
-  
-  <a href="{% url 'asignaciones' %}">Volver a la lista de asignaciones</a>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- Mostrar formulario de Asignación -->
+    <div class="form-group">
+      <label for="empleado">Empleado:</label>
+      <div class="input-icon-container">
+        <i class="bx bx-rename"></i>
+        {{ form.empleado }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="elementos">Elementos:</label>
+      <div class="input-icon-container">
+        <i class="bx bx-rename"></i>
+        {{ form.elementos }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="computador">Computador:</label>
+      <div class="input-icon-container">
+        <i class="bx bx-rename"></i>
+        {{ form.computador }}
+      </div>
+    </div>
+
+    <div class="button-container">
+      <a href="{% url 'asignaciones' %}" class="btn btn-secondary">Cancelar</a>
+      <input type="submit" value="Actualizar">
+    </div>
+  </form>
+</div>
 {% endblock %}

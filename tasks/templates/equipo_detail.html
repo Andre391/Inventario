@@ -27,8 +27,8 @@
             <div class="input-icon-container">
                 <i class='bx bx-map'></i>
                 <select id="ubicacion" name="ubicacion" class="form-control">
-                    <option value="bodega" {% if equipo.ubicacion == 'bodega' %}selected{% endif %}>Bodega</option>
-                    <option value="oficina" {% if equipo.ubicacion == 'oficina' %}selected{% endif %}>Oficina</option>
+                    <option value="Bodega" {% if equipo.ubicacion == 'Bodega' %}selected{% endif %}>Bodega</option>
+                    <option value="Oficina" {% if equipo.ubicacion == 'oficina' %}selected{% endif %}>Oficina</option>
                 </select>
             </div>
         </div>
@@ -38,11 +38,11 @@
             <div class="input-icon-container">
                 <i class='bx bxs-hand-right'></i>
                 <select id="estado" name="estado" class="form-control">
-                    <option value="excelente" {% if equipo.estado == 'excelente' %}selected{% endif %}>Excelente</option>
-                    <option value="bueno" {% if equipo.estado == 'bueno' %}selected{% endif %}>Bueno</option>
-                    <option value="regular" {% if equipo.estado == 'regular' %}selected{% endif %}>Regular</option>
-                    <option value="no_disponible" {% if equipo.estado == 'no_disponible' %}selected{% endif %}>No Disponible</option>
-                    <option value="malo" {% if equipo.estado == 'malo' %}selected{% endif %}>Malo</option>
+                    <option value="Excelente" {% if equipo.estado == 'Excelente' %}selected{% endif %}>Excelente</option>
+                    <option value="Bueno" {% if equipo.estado == 'Bueno' %}selected{% endif %}>Bueno</option>
+                    <option value="Regular" {% if equipo.estado == 'Regular' %}selected{% endif %}>Regular</option>
+                    <option value="No disponible" {% if equipo.estado == 'No disponible' %}selected{% endif %}>No Disponible</option>
+                    <option value="Malo" {% if equipo.estado == 'Malo' %}selected{% endif %}>Malo</option>
                 </select>
             </div>
         </div>
@@ -51,8 +51,8 @@
         <div class="input-icon-container">
             <i class='bx bx-buildings'></i>
             <select id="tipo" name="tipo" class="form-control">
-                <option value="escritorio" {% if equipo.tipo == 'escritorio' %}selected{% endif %}>Escritorio</option>
-                <option value="portatil" {% if equipo.tipo == 'portatil' %}selected{% endif %}>Portátil</option>
+                <option value="Escritorio" {% if equipo.tipo == 'escritorio' %}selected{% endif %}>Escritorio</option>
+                <option value="Portatil" {% if equipo.tipo == 'portatil' %}selected{% endif %}>Portátil</option>
             </select>
         </div>
 

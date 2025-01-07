@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-
 
 <div class="container-form">
     <div class="information">
@@ -17,7 +15,14 @@
     <div class="form-information">
         <div class="form-information-childs">
             <h2>Iniciar Sesión </h2>
-            {{error}}
+            
+            <!-- Mostrar el cuadro de error solo si hay un mensaje de error -->
+            {% if error %}
+            <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+                {{ error }}
+            </div>
+            {% endif %}
+            
             <div class="icons">
                 <i class='bx bxl-google'></i>
                 <i class='bx bxl-microsoft'></i>

@@ -165,9 +165,17 @@ def crear_equipo(request):
         estado = request.POST.get('estado')
         tipo = request.POST.get('tipo')
         
+        # Verificar si el campo 'serial' está vacío
+        if not serial:
+            return render(request, 'create_equipo.html', {'error': 'Es obligatorio el serial del equipo.'})
+        
         # Verifica si el equipo con el serial ya existe
         if Equipo.objects.filter(serial=serial).exists():
             return render(request, 'create_equipo.html', {'error': 'Ya existe un equipo con ese serial.'})
+        
+        # Verificar si el campo 'marca' está vacío
+        if not marca:
+            return render(request, 'create_equipo.html', {'error': 'Es obligatorio la marca del equipo.'})
         
         # Crea una nueva instancia y la guarda
         equipo = Equipo(
@@ -230,11 +238,15 @@ def crear_empleado(request):
         nombre = request.POST.get('nombre')
         cargo = request.POST.get('cargo')
 
-        
+        # Verificar si el campo 'codigo' está vacío
+        if not codigo:
+            return render(request, 'create_empleado.html', {'error': 'Es obligatorio el código del empleado.'})
+
+        # Verificar si ya existe un empleado con el mismo código
         if Empleado.objects.filter(codigo=codigo).exists():
-            return render(request, 'create_empleado.html', {'error': 'Ya existe un empleado con ese codigo.'})
+            return render(request, 'create_empleado.html', {'error': 'Ya existe un empleado con ese código.'})
         
-        # Crea una nueva instancia y la guarda
+        # Crear la nueva instancia y guardarla
         empleado = Empleado(
             codigo=codigo,
             nombre=nombre,
@@ -242,10 +254,10 @@ def crear_empleado(request):
         )
         empleado.save()
 
-        # Redirige a la página 
+        # Redirigir a la página de empleados
         return redirect('empleados') 
 
-    return render(request, 'create_empleado.html') 
+    return render(request, 'create_empleado.html')
 
 @login_required          
 def delete_empleado(request, codigo):

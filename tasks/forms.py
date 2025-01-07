@@ -10,6 +10,12 @@ class EquipoForm(ModelForm):
     class Meta:
         model = Equipo
         fields = ['serial','marca','ubicacion','estado','tipo']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Personalización de los widgets si es necesario
+        self.fields['serial'].widget.attrs.update({'class': 'form-control'})
+        self.fields['marca'].widget.attrs.update({'class': 'form-control'})
         
 class EmpleadoForm(ModelForm):
     class Meta:

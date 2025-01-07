@@ -16,7 +16,11 @@
     <div class="form-information">
         <div class="form-information-childs">
             <h2>Crear una Cuenta </h2>
-            {{error}}
+            {% if error %}
+            <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+                {{ error }}
+            </div>
+            {% endif %}
             <div class="icons">
                 <i class='bx bxl-google'></i>
                 <i class='bx bxl-microsoft'></i>

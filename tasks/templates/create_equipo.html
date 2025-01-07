@@ -3,7 +3,11 @@
 {% block content %}
 <div class="formulario-flotante">
     <h1>Crear Equipo</h1>
-    {{error}}
+    {% if error %}
+    <div class="p-1 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+        {{ error }}
+    </div>
+    {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
         <div class="form-group">

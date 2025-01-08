@@ -395,4 +395,42 @@ input[type="submit"]:hover {
     font-size: 18px;
     color: #4343437e; 
   }
+
+/* Establecer la altura máxima de la tabla según el tamaño de la pantalla */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1300px) {
+    .table-responsive {
+        max-height: 800px !important;
+    }
+}
+
+@media (min-width: 913px) and (max-width: 1280px) {
+    .table-responsive {
+        max-height: 390px !important; 
+    }
+}
+
+@media (max-width: 912px) {
+    .table-responsive {
+        max-height: 600px !important;
+    }
+}
+
+@media (max-width: 700px)  {
+    .table-responsive {
+        max-height: 550px !important;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 340px)  {
+    .table-responsive {
+        max-height: 300px !important;
+    }
+}
+
   

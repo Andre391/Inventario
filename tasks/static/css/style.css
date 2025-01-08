@@ -1,5 +1,5 @@
 body {
-    background: url(https://th.bing.com/th/id/R.4cdd6aa38c15a5516fcd970500797297?rik=YHQkMCQ8siGhLg&pid=ImgRaw&r=0) rgba(0, 0, 0, 0.5); 
+    background: url(https://th.bing.com/th/id/R.4cdd6aa38c15a5516fcd970500797297?rik=YHQkMCQ8siGhLg&pid=ImgRaw&r=0) rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,8 +12,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.135); 
-    z-index: -1; 
+    background-color: rgba(0, 0, 0, 0.135);
+    z-index: -1;
 }
 
 @media(max-width : 991px) {
@@ -22,6 +22,7 @@ body::before {
         backdrop-filter: blur(10px);
     }
 }
+
 section {
     width: 100%;
     display: flex;
@@ -36,16 +37,18 @@ section {
 }
 
 .scrollable-content {
-    max-height: 80vh; /* Ajusta la altura máxima */
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    max-height: 80vh;
+    /* Ajusta la altura máxima */
+    overflow-y: auto;
+    /* Habilita el desplazamiento vertical */
     width: 100%;
 }
 
 
 .sidebar .btn-close {
-    font-size: 1.2rem; 
-    width: 1.5rem;  
-    height: 1.5rem; 
+    font-size: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .btn.boton {
@@ -61,6 +64,7 @@ section {
 .btn.editar {
     background-color: rgba(106, 202, 234, 0.763);
 }
+
 .btn.editar:hover {
     background-color: rgba(90, 186, 218, 0.817);
 }
@@ -74,33 +78,35 @@ section {
 }
 
 table {
-    border-radius: 10px; 
-    overflow: hidden; 
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 10px; /* Redondear la esquina inferior izquierda */
+    border-bottom-left-radius: 10px;
+    /* Redondear la esquina inferior izquierda */
 }
 
 table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 10px; /* Redondear la esquina inferior derecha */
+    border-bottom-right-radius: 10px;
+    /* Redondear la esquina inferior derecha */
 }
 
 
 /*FORMULARIO DE REGISTRO*/
-.container-form{
+.container-form {
     height: 500px;
     display: flex;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: 0 5px 7px rgb(0, 0, 0,.1);
+    box-shadow: 0 5px 7px rgb(0, 0, 0, .1);
     max-width: 900px;
     transition: all 1s ease;
-    margin: 15px auto; 
-    border:solid thin #d3c7f3;
+    margin: 15px auto;
+    border: solid thin #d3c7f3;
 }
 
-.information{
+.information {
     width: 40%;
     display: flex;
     align-items: center;
@@ -110,20 +116,22 @@ table tbody tr:last-child td:last-child {
     border-bottom-left-radius: 20px;
 }
 
-.info-childs{
+.info-childs {
     width: 100%;
     padding: 0 30px;
 }
 
-.info-childs h2{
-    font-size:2.5rem;
+.info-childs h2 {
+    font-size: 2.5rem;
     color: #333;
 }
-.info-childs p{
+
+.info-childs p {
     margin: 15px 0;
     color: #555;
 }
-.info-childs input{
+
+.info-childs input {
     background-color: transparent;
     outline: none;
     border: solid 2px rgba(241, 156, 222, 0.726);
@@ -134,14 +142,14 @@ table tbody tr:last-child td:last-child {
     transition: background-color .3s ease;
 }
 
-.info-childs input:hover{
-    background-color:rgba(241, 156, 222, 0.726);
+.info-childs input:hover {
+    background-color: rgba(241, 156, 222, 0.726);
     border: none;
     color: #fff;
-    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
 }
 
-.form-information{
+.form-information {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,21 +160,24 @@ table tbody tr:last-child td:last-child {
     border-bottom-right-radius: 20px;
 }
 
-.form-information-childs{
+.form-information-childs {
     padding: 0 30px;
 }
-.form-information-childs h2{
+
+.form-information-childs h2 {
     color: #333;
     font-size: 2rem;
 }
-.form-information-childs p{
+
+.form-information-childs p {
     color: #555;
 }
 
-.icons{
-    margin: 15px 0 ;
+.icons {
+    margin: 15px 0;
 }
-.icons i{
+
+.icons i {
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
@@ -174,27 +185,29 @@ table tbody tr:last-child td:last-child {
     color: #919191;
     border: solid thin #d3c7f3;
     transition: background-color 0.3s ease;
-    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
 }
 
-.icons i:hover{
+.icons i:hover {
     background-color: #d3c7f3;
     color: #fff;
 }
 
-.form{
+.form {
     margin: 30px 0 0 0;
 }
-.form label{
+
+.form label {
     display: flex;
     align-items: center;
     background-color: #fff;
     margin-bottom: 15px;
     border-radius: 20px;
     padding: 0 10px;
-    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
 }
-.form label input{
+
+.form label input {
     width: 100%;
     padding: 10px;
     background-color: #fff;
@@ -204,11 +217,11 @@ table tbody tr:last-child td:last-child {
     color: #333;
 }
 
-.form label i{
+.form label i {
     color: #a7a7a7;
 }
 
-.form input[type="submit"]{
+.form input[type="submit"] {
     background-color: #d3c7f3;
     color: #fff;
     border-radius: 20px;
@@ -216,38 +229,41 @@ table tbody tr:last-child td:last-child {
     padding: 10px 15px;
     cursor: pointer;
     margin-top: 10px;
-    box-shadow: 0 2px 5px rgb(0, 0, 0,.1);
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
 }
-.form input[type="submit"]:hover{
+
+.form input[type="submit"]:hover {
     background-color: #c1b1ed;
 }
 
 /*RESPONSIVE FORM*/
 @media screen and (max-width:750px) {
-    html{
+    html {
         font-size: 12px;
-    }   
+    }
 }
 
 @media screen and (max-width:580px) {
-    html{
+    html {
         font-size: 10px;
-    }   
-    .container-form{
+    }
+
+    .container-form {
         flex-direction: column;
         height: auto;
     }
 
-    .information{
-        width:100% ;
+    .information {
+        width: 100%;
         padding: 20px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         border-bottom-left-radius: 0px;
 
     }
-    .form-information{
-        width:100% ;
+
+    .form-information {
+        width: 100%;
         padding: 20px;
         border-bottom-left-radius: 20px;
         border-top-right-radius: 0px;
@@ -267,7 +283,7 @@ table tbody tr:last-child td:last-child {
 }
 
 .form-group {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 .input-icon-container {
@@ -283,7 +299,7 @@ table tbody tr:last-child td:last-child {
 }
 
 .input-icon-container input {
-    padding-left: 35px; 
+    padding-left: 35px;
     width: 100%;
     height: 40px;
     border: 1px solid #ddd;
@@ -301,14 +317,14 @@ table tbody tr:last-child td:last-child {
 
 .button-container input[type="submit"],
 .button-container .btn {
-    width: auto; 
-    padding: 10px 20px; 
+    width: auto;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
 
 .button-container .btn-secondary {
-    background-color: #f3c7d1; 
+    background-color: #f3c7d1;
     color: #000000;
     border-radius: 20px;
     border: none;
@@ -319,12 +335,12 @@ table tbody tr:last-child td:last-child {
 }
 
 .button-container .btn-secondary:hover {
-    background-color: #f09696; 
+    background-color: #f09696;
 }
 
 /* Estilo para el botón "Actualizar" */
 input[type="submit"] {
-    background-color: rgba(241, 156, 222, 0.726); 
+    background-color: rgba(241, 156, 222, 0.726);
     color: #000000;
     border-radius: 20px;
     border: none;
@@ -335,7 +351,8 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: rgba(236, 135, 214, 0.726); /* Cambio al pasar el cursor */
+    background-color: rgba(236, 135, 214, 0.726);
+    /* Cambio al pasar el cursor */
 }
 
 /* FORMULARIO DE CREAR ASIGNACIÓN*/
@@ -344,59 +361,74 @@ input[type="submit"]:hover {
 .input-icon-container {
     position: relative;
     width: 100%;
-  }
+}
 
-  .input-icon-container select {
-    width: 100%; /* Ancho completo para que se ajuste al contenedor */
-    height: 40px; /* Altura común */
-    padding-left: 35px; /* Espacio para el icono */
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 16px;
-    color: #333;
-    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
-    appearance: none; /* Opcional: Elimina el estilo predeterminado del select */
-  }
-  .input-icon-container .elementos_class {
-    width: 100%; /* Ancho completo para que se ajuste al contenedor */
-    height: 100px; /* Altura común */
-    padding-left: 35px; /* Espacio para el icono */
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 16px;
-    color: #333;
-    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
-    appearance: none; /* Opcional: Elimina el estilo predeterminado del select */
-  }
-
-  /* Si quieres hacer el dropdown más grande */
-  .input-icon-container select.custom-select {
-    height: 100px; /* Establece una altura más grande para el dropdown */
-  }
-  
-  /* Estilos para los input */
-  .input-icon-container input {
+.input-icon-container select {
     width: 100%;
-    height: 40px; /* Altura igual al select */
-    padding-left: 35px; /* Espacio para el icono */
+    /* Ancho completo para que se ajuste al contenedor */
+    height: 40px;
+    /* Altura común */
+    padding-left: 35px;
+    /* Espacio para el icono */
     border: 1px solid #ddd;
     border-radius: 20px;
     font-size: 16px;
     color: #333;
-    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
-  }
-  
-  /* Estilo del icono dentro del contenedor */
-  .input-icon-container i {
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+    appearance: none;
+    /* Opcional: Elimina el estilo predeterminado del select */
+}
+
+.input-icon-container .elementos_class {
+    width: 100%;
+    /* Ancho completo para que se ajuste al contenedor */
+    height: 100px;
+    /* Altura común */
+    padding-left: 35px;
+    /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+    appearance: none;
+    /* Opcional: Elimina el estilo predeterminado del select */
+}
+
+/* Si quieres hacer el dropdown más grande */
+.input-icon-container select.custom-select {
+    height: 100px;
+    /* Establece una altura más grande para el dropdown */
+}
+
+/* Estilos para los input */
+.input-icon-container input {
+    width: 100%;
+    height: 40px;
+    /* Altura igual al select */
+    padding-left: 35px;
+    /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+}
+
+/* Estilo del icono dentro del contenedor */
+.input-icon-container i {
     position: absolute;
     top: 50%;
-    left: 10px; 
+    left: 10px;
     transform: translateY(-50%);
     font-size: 18px;
-    color: #4343437e; 
-  }
+    color: #4343437e;
+}
 
-/* Establecer la altura máxima de la tabla según el tamaño de la pantalla */
+/* RESPONSIVE ENTRE LAS PANTALLAS */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -411,7 +443,7 @@ input[type="submit"]:hover {
 
 @media (min-width: 913px) and (max-width: 1280px) {
     .table-responsive {
-        max-height: 390px !important; 
+        max-height: 390px !important;
     }
 }
 
@@ -421,16 +453,19 @@ input[type="submit"]:hover {
     }
 }
 
-@media (max-width: 700px)  {
+@media (max-width: 700px) {
     .table-responsive {
         max-height: 550px !important;
     }
 }
 
-@media (min-width: 200px) and (max-width: 340px)  {
+@media (min-width: 200px) and (max-width: 340px) {
     .table-responsive {
         max-height: 300px !important;
     }
 }
 
-  
+/* DATATABLES */
+.dataTables_filter {
+    margin-bottom: 15px;
+}

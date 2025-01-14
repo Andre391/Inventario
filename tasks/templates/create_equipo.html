@@ -14,7 +14,7 @@
             <label for="serial">Serial:</label>
             <div class="input-icon-container">
                 <i class='bx bx-terminal'></i>
-                <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial del Equipo">
+                <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial del Equipo" value="{{ serial|default:'' }}">
             </div>
         </div>
 
@@ -22,17 +22,17 @@
             <label for="marca">Marca:</label>
             <div class="input-icon-container">
                 <i class='bx bx-bookmark'></i>
-                <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca del equipo">
+                <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca del equipo" value="{{ marca|default:'' }}">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="ubicacion">Ubicacion:</label>
+            <label for="ubicacion">Ubicación:</label>
             <div class="input-icon-container">
                 <i class='bx bx-map'></i>
                 <select id="ubicacion" name="ubicacion" class="form-control">
-                    <option value="Bodega" {% if equipo.estado == 'Bodega' %}selected{% endif %}>Bodega</option>
-                    <option value="Oficina" {% if equipo.estado == 'Oficina' %}selected{% endif %}>Oficina</option>
+                    <option value="Bodega" {% if ubicacion == 'Bodega' %}selected{% endif %}>Bodega</option>
+                    <option value="Oficina" {% if ubicacion == 'Oficina' %}selected{% endif %}>Oficina</option>
                 </select>
             </div>
         </div>
@@ -42,25 +42,26 @@
             <div class="input-icon-container">
                 <i class='bx bxs-hand-right'></i>
                 <select id="estado" name="estado" class="form-control">
-                    <option value="Excelente" {% if elemento.estado == 'Excelente' %}selected{% endif %}>Excelente</option>
-                    <option value="Bueno" {% if elemento.estado == 'Bueno' %}selected{% endif %}>Bueno</option>
-                    <option value="Regular" {% if elemento.estado == 'Regular' %}selected{% endif %}>Regular</option>
-                    <option value="No disponible" {% if elemento.estado == 'No_disponible' %}selected{% endif %}>No Disponible</option>
-                    <option value="Malo" {% if elemento.estado == 'Malo' %}selected{% endif %}>Malo</option>
+                    <option value="Excelente" {% if estado == 'Excelente' %}selected{% endif %}>Excelente</option>
+                    <option value="Bueno" {% if estado == 'Bueno' %}selected{% endif %}>Bueno</option>
+                    <option value="Regular" {% if estado == 'Regular' %}selected{% endif %}>Regular</option>
+                    <option value="No disponible" {% if estado == 'No disponible' %}selected{% endif %}>No Disponible</option>
+                    <option value="Malo" {% if estado == 'Malo' %}selected{% endif %}>Malo</option>
                 </select>
             </div>
         </div>
-        
 
-        <label for="tipo">Tipo:</label>
-        <div class="input-icon-container">
-            <i class='bx bx-buildings' ></i>
-            <select id="tipo" name="tipo" class="form-control">
-                <option value="Escritorio" {% if equipo.estado == 'escritorio' %}selected{% endif %}>Escritorio</option>
-                <option value="Portatil" {% if equipo.estado == 'portatil' %}selected{% endif %}>Portátil</option>
-            </select>
+        <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <div class="input-icon-container">
+                <i class='bx bx-buildings'></i>
+                <select id="tipo" name="tipo" class="form-control">
+                    <option value="Escritorio" {% if tipo == 'Escritorio' %}selected{% endif %}>Escritorio</option>
+                    <option value="Portatil" {% if tipo == 'Portatil' %}selected{% endif %}>Portátil</option>
+                </select>
+            </div>
         </div>
-        
+
         <div class="button-container">
             <a href="{% url 'equipos' %}" class="btn btn-secondary">Cancelar</a>
             <input type="submit" value="Guardar">

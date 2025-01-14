@@ -1,12 +1,15 @@
-<!-- create_asignacion.html -->
 {% extends 'base.html' %}
 
 {% block content %}
 <div class="formulario-flotante">
   <h1>Crear Asignación</h1>
+
   {% if error %}
-  <p style="color: red; margin-top: 10px;">{{ error }}</p>
+  <div class="p-1 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+      {{ error }}
+  </div>
   {% endif %}
+  
   <form action="" method="POST">
     {% csrf_token %}
 
@@ -14,12 +17,17 @@
       <label for="empleado">Empleado:</label>
       <div class="input-icon-container">
         <i class='bx bx-user-circle'></i>
-        <select name="empleado" id="empleado">
-          <!-- Opciones para empleados -->
+        <select name="empleado" id="empleado" class="form-control">
+          <option value="">Seleccione un empleado</option>
           {% for empleado in empleados %}
-              <option value="{{ empleado.codigo }}">{{ empleado.nombre }}</option>
+              <option value="{{ empleado.codigo }}" {% if empleado.codigo == empleado_id %}selected{% endif %}>{{ empleado.nombre }}</option>
           {% endfor %}
-      </select>
+        </select>
+        {% if error %}
+          <div class="invalid-feedback">
+            <p>{{ error }}</p>
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -28,26 +36,34 @@
       <div class="input-icon-container">
         <i class='bx bx-sitemap'></i>
         <select name="elementos" id="elementos" multiple size="10" class="custom-select">
-          <!-- Opciones para elementos -->
           {% for elemento in elementos %}
-              <option value="{{ elemento.id }}">{{ elemento.nombre }}</option>
+              <option value="{{ elemento.id }}" {% if elemento.id in elementos_ids %}selected{% endif %}>{{ elemento.nombre }}</option>
           {% endfor %}
         </select>
-        
+        {% if error %}
+          <div class="invalid-feedback">
+            <p>{{ error }}</p>
+          </div>
+        {% endif %}
       </div>
     </div>
     
     <div class="form-group">
       <label for="computador">Computador:</label>
       <div class="input-icon-container">
-        <i class='bx bx-laptop' ></i>
-        <input type="text" name="computador" id="computador">
+        <i class='bx bx-laptop'></i>
+        <input type="text" name="computador" id="computador" class="form-control" value="{{ computador }}">
+        {% if error %}
+          <div class="invalid-feedback">
+            <p>{{ error }}</p>
+          </div>
+        {% endif %}
       </div>
     </div>
 
     <div class="button-container">
       <a href="{% url 'asignaciones' %}" class="btn btn-secondary">Cancelar</a>
-      <input type="submit" value="Guardar">
+      <input type="submit" value="Guardar" class="btn btn-primary">
     </div>
   </form>
 </div>

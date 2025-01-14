@@ -54,10 +54,9 @@ def elementos(request):
 
 @login_required
 def crear_elemento(request):
-    
     if request.method == 'GET':
-        return render(request, 'create_elemento.html',{
-            'form': ElementoForm
+        return render(request, 'create_elemento.html', {
+            'form': ElementoForm()
         })
     else:
         try:
@@ -67,9 +66,9 @@ def crear_elemento(request):
             new_elemento.save()
             return redirect('elementos')
         except:
-            return render(request,'create_elemento.html',{
-                'form': ElementoForm,
-                'error': 'Por favor ingrese datos validos'
+            return render(request, 'create_elemento.html', {
+                'form': form,  # Aquí pasamos el formulario con los datos ya ingresados
+                'error': 'Por favor ingrese datos válidos'
             })
 
 @login_required
@@ -167,15 +166,21 @@ def crear_equipo(request):
         
         # Verificar si el campo 'serial' está vacío
         if not serial:
-            return render(request, 'create_equipo.html', {'error': 'Es obligatorio el serial del equipo.'})
+            return render(request, 'create_equipo.html', {'error': 'Es obligatorio el serial del equipo.',
+                                                          'serial': serial, 'marca': marca, 'ubicacion': ubicacion,
+                                                          'estado': estado, 'tipo': tipo})
         
         # Verifica si el equipo con el serial ya existe
         if Equipo.objects.filter(serial=serial).exists():
-            return render(request, 'create_equipo.html', {'error': 'Ya existe un equipo con ese serial.'})
+            return render(request, 'create_equipo.html', {'error': 'Ya existe un equipo con ese serial.',
+                                                          'serial': serial, 'marca': marca, 'ubicacion': ubicacion,
+                                                          'estado': estado, 'tipo': tipo})
         
         # Verificar si el campo 'marca' está vacío
         if not marca:
-            return render(request, 'create_equipo.html', {'error': 'Es obligatorio la marca del equipo.'})
+            return render(request, 'create_equipo.html', {'error': 'Es obligatorio la marca del equipo.',
+                                                          'serial': serial, 'marca': marca, 'ubicacion': ubicacion,
+                                                          'estado': estado, 'tipo': tipo})
         
         # Crea una nueva instancia y la guarda
         equipo = Equipo(
@@ -187,7 +192,7 @@ def crear_equipo(request):
         )
         equipo.save()
 
-        # Redirige a la página 
+        # Redirige a la página de equipos
         return redirect('equipos') 
 
     return render(request, 'create_equipo.html') 
@@ -240,11 +245,23 @@ def crear_empleado(request):
 
         # Verificar si el campo 'codigo' está vacío
         if not codigo:
-            return render(request, 'create_empleado.html', {'error': 'Es obligatorio el código del empleado.'})
-
+            return render(request, 'create_empleado.html', {'error': 'Es obligatorio el código del empleado.',
+                                                            'codigo': codigo, 'nombre': nombre, 'cargo': cargo})
+        
+        # Verificar si el campo 'nombre' está vacío
+        if not nombre:
+            return render(request, 'create_empleado.html', {'error': 'Es obligatorio el nombre del empleado.',
+                                                            'codigo': codigo, 'nombre': nombre, 'cargo': cargo})
+        
+        # Verificar si el campo 'cargo' está vacío
+        if not cargo:
+            return render(request, 'create_empleado.html', {'error': 'Es obligatorio el área del empleado.',
+                                                            'codigo': codigo, 'nombre': nombre, 'cargo': cargo})
+        
         # Verificar si ya existe un empleado con el mismo código
         if Empleado.objects.filter(codigo=codigo).exists():
-            return render(request, 'create_empleado.html', {'error': 'Ya existe un empleado con ese código.'})
+            return render(request, 'create_empleado.html', {'error': 'Ya existe un empleado con ese código.',
+                                                            'codigo': codigo, 'nombre': nombre, 'cargo': cargo})
         
         # Crear la nueva instancia y guardarla
         empleado = Empleado(
@@ -258,6 +275,7 @@ def crear_empleado(request):
         return redirect('empleados') 
 
     return render(request, 'create_empleado.html')
+
 
 @login_required          
 def delete_empleado(request, codigo):
@@ -292,6 +310,8 @@ def asignacion_detail(request, pk):
             return render(request, 'asignacion_detail.html', {
                 'form': form,
                 'asignacion': asignacion,
+                'empleados': Empleado.objects.all(),
+                'elementos': Elemento.objects.all(),
                 'error': 'Hubo un error al intentar actualizar la asignación'
             })
     else:
@@ -306,6 +326,7 @@ def asignacion_detail(request, pk):
             'empleados': empleados,
             'elementos': elementos,
         })
+
 @login_required
 def crear_asignacion(request):
     if request.method == 'POST':
@@ -314,8 +335,30 @@ def crear_asignacion(request):
         elementos_ids = request.POST.getlist('elementos')  # Lista de ids de los elementos seleccionados
         computador = request.POST.get('computador')
 
+        # Validación: Verificar que los campos requeridos no estén vacíos
+        if not empleado_id or not elementos_ids or not computador:
+            return render(request, 'create_asignacion.html', {
+                'error': 'Todos los campos son obligatorios.',
+                'empleados': Empleado.objects.all(),
+                'elementos': Elemento.objects.all(),
+                'empleado_id': empleado_id,
+                'elementos_ids': elementos_ids,
+                'computador': computador
+            })
+
         # Obtén el empleado y los elementos correspondientes
-        empleado = Empleado.objects.get(codigo=empleado_id)
+        try:
+            empleado = Empleado.objects.get(codigo=empleado_id)
+        except Empleado.DoesNotExist:
+            return render(request, 'create_asignacion.html', {
+                'error': 'Empleado no encontrado.',
+                'empleados': Empleado.objects.all(),
+                'elementos': Elemento.objects.all(),
+                'empleado_id': empleado_id,
+                'elementos_ids': elementos_ids,
+                'computador': computador
+            })
+        
         elementos = Elemento.objects.filter(id__in=elementos_ids)
 
         # Crea la asignación
@@ -330,7 +373,11 @@ def crear_asignacion(request):
     # Si la solicitud es GET, pasamos los empleados y elementos al contexto
     empleados = Empleado.objects.all()
     elementos = Elemento.objects.all()
-    return render(request, 'create_asignacion.html', {'empleados': empleados, 'elementos': elementos})
+    return render(request, 'create_asignacion.html', {
+        'empleados': empleados,
+        'elementos': elementos
+    })
+
 
 
 @login_required

@@ -11,26 +11,26 @@
     <form action="" method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <label for="codigo">Codigo:</label>
+            <label for="codigo">Código:</label>
             <div class="input-icon-container">
                 <i class='bx bx-code'></i>
-                <input type="number" id="codigo" name="codigo" class="form-control" placeholder="Codigo del Empleado" min="0">
+                <input type="number" id="codigo" name="codigo" class="form-control" placeholder="Código del Empleado" min="0" value="{{ codigo|default:'' }}">
             </div>
         </div>
 
         <div class="form-group">
             <label for="nombre">Nombre:</label>
             <div class="input-icon-container">
-                <i class='bx bx-rename' ></i>
-                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del Empleado">
+                <i class='bx bx-rename'></i>
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del Empleado" value="{{ nombre|default:'' }}">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="cargo">Cargo:</label>
+            <label for="cargo">Área:</label>
             <div class="input-icon-container">
                 <i class='bx bx-category'></i>
-                <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo del Empleado">
+                <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Área del Empleado" value="{{ cargo|default:'' }}">
             </div>
         </div>
 

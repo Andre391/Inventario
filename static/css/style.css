@@ -1,0 +1,609 @@
+body {
+    background: url(https://th.bing.com/th/id/R.4cdd6aa38c15a5516fcd970500797297?rik=YHQkMCQ8siGhLg&pid=ImgRaw&r=0) rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.135);
+    z-index: -1;
+}
+
+@media(max-width : 991px) {
+    .sidebar {
+        background-color: rgb(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+    }
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.scrollable-content {
+    max-height: 80vh;
+    /* Ajusta la altura máxima */
+    overflow-y: auto;
+    /* Habilita el desplazamiento vertical */
+    width: 100%;
+}
+
+
+.sidebar .btn-close {
+    font-size: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.btn.boton {
+    background-color: #d3c7f3;
+    color: white;
+}
+
+.btn.boton:hover {
+    background-color: #c5b3f5;
+    color: white;
+}
+
+.btn.editar {
+    background-color: rgba(106, 202, 234, 0.763);
+}
+
+.btn.editar:hover {
+    background-color: rgba(90, 186, 218, 0.817);
+}
+
+.btn.eliminar {
+    background-color: rgba(228, 112, 112, 0.817);
+}
+
+.btn.eliminar:hover {
+    background-color: rgba(227, 94, 94, 0.817);
+}
+
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+    /* Redondear la esquina inferior izquierda */
+}
+
+table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+    /* Redondear la esquina inferior derecha */
+}
+
+
+/*FORMULARIO DE REGISTRO*/
+.container-form {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgb(0, 0, 0, .1);
+    max-width: 900px;
+    transition: all 1s ease;
+    margin: 15px auto;
+    border: solid thin #d3c7f3;
+}
+
+.information {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #d3c7f3;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.info-childs {
+    width: 100%;
+    padding: 0 30px;
+}
+
+.info-childs h2 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.info-childs p {
+    margin: 15px 0;
+    color: #555;
+}
+
+.info-childs input {
+    background-color: transparent;
+    outline: none;
+    border: solid 2px rgba(241, 156, 222, 0.726);
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.info-childs input:hover {
+    background-color: rgba(241, 156, 222, 0.726);
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
+}
+
+.form-information {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-information-childs {
+    padding: 0 30px;
+}
+
+.form-information-childs h2 {
+    color: #333;
+    font-size: 2rem;
+}
+
+.form-information-childs p {
+    color: #555;
+}
+
+.icons {
+    margin: 15px 0;
+}
+
+.icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #919191;
+    border: solid thin #d3c7f3;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
+}
+
+.icons i:hover {
+    background-color: #d3c7f3;
+    color: #fff;
+}
+
+.form {
+    margin: 30px 0 0 0;
+}
+
+.form label {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
+}
+
+.form label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+.form label i {
+    color: #a7a7a7;
+}
+
+.form input[type="submit"] {
+    background-color: #d3c7f3;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, .1);
+}
+
+.form input[type="submit"]:hover {
+    background-color: #c1b1ed;
+}
+
+/*RESPONSIVE FORM*/
+@media screen and (max-width:750px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:580px) {
+    html {
+        font-size: 10px;
+    }
+
+    .container-form {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .information {
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+
+    }
+
+    .form-information {
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px;
+    }
+}
+
+
+/*FORMULARIO DE EDITAR Y CREAR*/
+.formulario-flotante {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #d3c7f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.input-icon-container {
+    position: relative;
+}
+
+.input-icon-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #919191;
+}
+
+.input-icon-container input {
+    padding-left: 35px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+/*BOTONES FORMULARIO DE EDITAR */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-container input[type="submit"],
+.button-container .btn {
+    width: auto;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+.button-container .btn-secondary {
+    background-color: #f3c7d1;
+    color: #000000;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+}
+
+.button-container .btn-secondary:hover {
+    background-color: #f09696;
+}
+
+/* Estilo para el botón "Actualizar" */
+input[type="submit"] {
+    background-color: rgba(241, 156, 222, 0.726);
+    color: #000000;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(236, 135, 214, 0.726);
+    /* Cambio al pasar el cursor */
+}
+
+/* FORMULARIO DE CREAR ASIGNACIÓN*/
+
+/* Contenedor común para los iconos */
+.input-icon-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon-container select {
+    width: 100%;
+    /* Ancho completo para que se ajuste al contenedor */
+    height: 40px;
+    /* Altura común */
+    padding-left: 35px;
+    /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+    appearance: none;
+    /* Opcional: Elimina el estilo predeterminado del select */
+}
+
+.input-icon-container .elementos_class {
+    width: 100%;
+    /* Ancho completo para que se ajuste al contenedor */
+    height: 100px;
+    /* Altura común */
+    padding-left: 35px;
+    /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+    appearance: none;
+    /* Opcional: Elimina el estilo predeterminado del select */
+}
+
+/* Si quieres hacer el dropdown más grande */
+.input-icon-container select.custom-select {
+    height: 100px;
+    /* Establece una altura más grande para el dropdown */
+}
+
+/* Estilos para los input */
+.input-icon-container input {
+    width: 100%;
+    height: 40px;
+    /* Altura igual al select */
+    padding-left: 35px;
+    /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al ancho total */
+}
+
+/* Estilo del icono dentro del contenedor */
+.input-icon-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #4343437e;
+}
+
+/* RESPONSIVE ENTRE LAS PANTALLAS */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1300px) {
+    .table-responsive {
+        max-height: 800px !important;
+    }
+}
+
+@media (min-width: 913px) and (max-width: 1280px) {
+    .table-responsive {
+        max-height: 390px !important;
+    }
+}
+
+@media (max-width: 912px) {
+    .table-responsive {
+        max-height: 600px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .table-responsive {
+        max-height: 550px !important;
+    }
+    .header_container {
+        grid-template-columns: 1fr;  /* Cambiar a una sola columna */
+        padding-block: 4rem 1rem;
+    }
+
+    .header_image {
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .header_image_card {
+        font-size: 1rem; /* Ajusta el tamaño de la fuente */
+        padding: .5rem 1rem;
+        width: 90%;
+    }
+
+    .header_content h1 {
+        font-size: 2.5rem; /* Ajusta el tamaño de la fuente */
+    }
+
+    .header_content p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 340px) {
+    .table-responsive {
+        max-height: 300px !important;
+    }
+    .header_container {
+        padding-block: 2rem 1rem; /* Menos padding en pantallas muy pequeñas */
+    }
+
+    .header_image img {
+        max-width: 100%; /* Asegura que la imagen sea responsiva */
+    }
+
+    .header_content h1 {
+        font-size: 2rem;
+    }
+
+    .header_content p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+/* DATATABLES */
+.dataTables_filter {
+    margin-bottom: 15px;
+}
+
+
+/*HOME*/
+.header_container{
+    max-width: 1200px;
+    margin:auto;
+    padding-block: 8rem 2rem;
+    padding-inline: 1rem;
+    display: grid;
+    gap: 2rem;
+    overflow: hidden;
+}
+
+.header_image{
+    position: relative;
+    isolation:isolate ;
+}
+
+.header_image::before {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../fondi.png"); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    opacity: 0.5;
+    z-index: -1;
+}
+.header_image img{
+    max-width: 520px;
+    margin-inline: auto;
+}
+
+.header_image_card{
+    position: absolute;
+    padding: .75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight:500;
+    color: black;
+    background-color: white;
+    white-space: nowrap;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0, .2);
+}
+
+.header_image_card span{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ac94ef;
+}
+
+.header_container{
+    padding-block: 2rem;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+
+.header_image{
+    grid-area: 1/2/2/3;
+}
+.header_content h1{
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 400;
+    color: black;
+    line-height: 5.5rem;
+    text-align: center;
+}
+
+.header_content h1 span{
+    color: #876ecb;
+}
+
+.header_content p{
+    margin-bottom: 1rem;
+    columns:#767268;
+    line-height: 1.75rem;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.header_content .bar{
+    font-size: .9rem;
+    color: #767268;
+    text-align: center;
+}
+
+.header_container :is(h1,p,.bar){
+    text-align: left
+}

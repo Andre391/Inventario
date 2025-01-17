@@ -50,3 +50,5 @@ urlpatterns = [
     path('logout/', views.logout_confirm, name='logout_confirm'),
     path('signin/', views.signin, name='signin'), 
 ]
+
+handler404 = 'tasks.views.custom_404'

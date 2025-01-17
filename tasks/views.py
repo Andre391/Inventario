@@ -391,3 +391,5 @@ def delete_asignacion(request, pk):
     return render(request, 'delete_asignacion.html', {'asignacion': asignacion})
 
 
+def custom_404(request, exception):
+    return render(request, '404.html', {}, status=404)

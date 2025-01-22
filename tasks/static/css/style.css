@@ -511,19 +511,22 @@ input[type="submit"]:hover {
 
 
 /*HOME*/
-.header_container{
-    max-width: 1200px;
-    margin:auto;
-    padding-block: 8rem 2rem;
-    padding-inline: 1rem;
-    display: grid;
-    gap: 2rem;
-    overflow: hidden;
+.header_container {
+    display: flex;
+    justify-content: space-between; /* Para distribuir el contenido */
+    align-items: center; /* Alinear el contenido verticalmente */
+    padding: 50px;
 }
 
-.header_image{
-    position: relative;
-    isolation:isolate ;
+.header_content {
+    flex: 1; /* Toma el 50% del ancho disponible */
+    padding-right: 20px; /* Separación entre texto e imagen */
+}
+
+.header_image {
+    flex: 1; /* Toma el 50% del ancho disponible */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
 }
 
 .header_image::before {
@@ -542,68 +545,7 @@ input[type="submit"]:hover {
     opacity: 0.5;
     z-index: -1;
 }
-.header_image img{
-    max-width: 520px;
-    margin-inline: auto;
-}
-
-.header_image_card{
-    position: absolute;
-    padding: .75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight:500;
-    color: black;
-    background-color: white;
-    white-space: nowrap;
-    border-radius: 5px;
-    box-shadow: 5px 5px 20px rgb(0, 0, 0, .2);
-}
-
-.header_image_card span{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ac94ef;
-}
-
-.header_container{
-    padding-block: 2rem;
-    grid-template-columns: repeat(2,1fr);
-    align-items: center;
-}
-
-.header_image{
-    grid-area: 1/2/2/3;
-}
-.header_content h1{
-    margin-bottom: 1rem;
-    font-size: 4rem;
-    font-weight: 400;
-    color: black;
-    line-height: 5.5rem;
-    text-align: center;
-}
-
-.header_content h1 span{
-    color: #876ecb;
-}
-
-.header_content p{
-    margin-bottom: 1rem;
-    columns:#767268;
-    line-height: 1.75rem;
-    text-align: center;
-    font-size: 1.6rem;
-}
-
-.header_content .bar{
-    font-size: .9rem;
-    color: #767268;
-    text-align: center;
-}
-
-.header_container :is(h1,p,.bar){
-    text-align: left
+.header_image img {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    height: auto; /* Mantiene la proporción de la imagen */
 }

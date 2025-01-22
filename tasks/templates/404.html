@@ -24,31 +24,34 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        nav.navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .container {
-            text-align: center;
-        }
-
         .main-wrapper {
-            background-image: url(../static/background.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-image: url(../static/B.jpg);
+            background-size: 120%;
+            background-attachment: fixed;
+            background-position: center center; 
             display: flex;
-            justify-content: center;
-            /* Centrado horizontal */
+            justify-content: space-between; 
             align-items: center;
-            /* Centrado vertical */
-            height: 100vh;
-            /* Ocupa toda la altura de la pantalla */
+            height: 100vh; 
+            overflow: hidden; 
+            padding: 100px;
+        }
+        .main-wrapper::before {
+            content: ''; /* Requiere un contenido vacío para el pseudo-elemento */
+            position: absolute; /* Lo posicionamos sobre el contenedor */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 30, 30, 0.114); /* Filtro de color semi-transparente */
+            z-index: 1; 
         }
 
         .content {
-            text-align: center;
+            text-align: left; /* Alinea el texto a la izquierda */
+            max-width: 500px; /* Limita el ancho del texto */
+            padding: 20px;
+            z-index: 10;
         }
 
         h1.title {
@@ -65,58 +68,121 @@
             margin: 25px 0;
         }
 
-        a.custom-btn {
-            background: #ddd;
-            padding: 10px 30px;
+        .custom-btn {
+            background: #d496db;
+            padding: 12px 30px; /* Aumentamos un poco el padding para mejor usabilidad */
             font-size: 18px;
-            color: #fff;
+            color: #4c4b4b;
             font-weight: 500;
             text-decoration: none;
+            border-radius: 20px;
+            display: inline-block; /* Hace que el botón sea un bloque en línea para mejor manejo */
+            margin-top: 20px; /* Añadimos margen superior para separarlo del texto */
+            transition: background 0.3s ease;
+        }
+        .custom-btn:hover {
+            background-color: #b583c5; 
         }
 
-        .page-img img {
-            width: 65%;
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
 
         .page-img {
             text-align: center;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .page-img img {
+            width: 80%; 
+            max-width: 500px; 
+        }
+
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column; 
+                justify-content: center; 
+                height: auto; 
+                background-size: 300%;
+            }
+
+            .main-wrapper::before {
+            width: 300%;
+            height: 120%;
+            background-color: rgba(30, 30, 30, 0.114); /* Filtro de color semi-transparente */
+        }
+
+            .content {
+                text-align: center; /* Centra el texto */
+                max-width: 100%; /* No limita el ancho */
+                margin-bottom: 20px; /* Añade espacio debajo del texto */
+            }
+
+            .page-img img {
+                width: 80%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+            }
+            .custom-btn {
+                font-size: 20px; /* Aumentamos un poco el tamaño del texto en dispositivos pequeños */
+                padding: 15px 40px; /* Aumentamos el padding para hacerlo más fácil de presionar */
+                margin-top: 30px; /* Aumentamos el margen superior */
+                width: auto; /* Ajustamos el ancho automático para que no se estire demasiado */
+            }
+        }
+
+        /* Media query para pantallas muy pequeñas (móviles) */
+        @media (max-width: 480px) {
+            .main-wrapper {
+                background-size: 800%;
+            }
+            .logo img {
+                width: 120px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+            }
+
+            h1.title {
+                font-size: 40px; /* Ajusta el tamaño del título */
+            }
+
+            h2 {
+                font-size: 30px; /* Ajusta el tamaño del subtítulo */
+            }
+
+            p.des {
+                font-size: 16px; /* Ajusta el tamaño del texto */
+            }
+            .custom-btn {
+                font-size: 16px; /* Ajustamos el tamaño de la fuente */
+                padding: 12px 25px; /* Ajustamos el padding */
+                width: 80%; /* Hacemos el botón más grande en pantallas pequeñas */
+                margin-top: 30px; /* Añadimos margen superior */
+                text-align: center; /* Asegura que el texto esté centrado en el botón */
+            }
+
         }
     </style>
 </head>
 
 <body>
-    <div class="body-wrapper">
-        <header class="header">
-            <div class="container">
-                <div class="row">
-                    <nav class="navigation">
-                        <a href="{% url 'home' %}" class="logo"><img src="../static/logo.ico" alt="LOGO" width="200px"
-                                style="margin: 10px;"></a>
-                    </nav>
+    <!-- Logo en la esquina superior izquierda -->
+    <a href="{% url 'home' %}" class="logo">
+        <img src="../static/logo.ico" alt="LOGO" width="150px">
+    </a>
 
-                </div>
-            </div>
-        </header>
-        
-    </div>
     <div class="main-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="content">
-                        <h1 class="title">Ooops...</h1>
-                        <h2>Página no encontrada</h2>
-                        <p class="des">La página que intentas buscar no existe o ocurrió un error; Vuelve al
-                            inicio.</p>
-                        <a href="{% url 'home' %}" class="custom-btn">Volver al inicio</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="page-img">
-                        <img src="../static/404error.png" alt="">
-                    </div>
-                </div>
-            </div>
+        <div class="content">
+            <h1 class="title">Ooops...</h1>
+            <h2>Página no encontrada</h2>
+            <p class="des">La página que intentas buscar no existe o ocurrió un error; Vuelve al
+                inicio.</p>
+            <a href="{% url 'home' %}" class="custom-btn">Volver al inicio</a>
+        </div>
+        <div class="page-img">
+            <img src="../static/404error.png" alt="">
         </div>
     </div>
 

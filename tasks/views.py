@@ -340,7 +340,7 @@ def crear_asignacion(request):
             return render(request, 'create_asignacion.html', {
                 'error': 'Todos los campos son obligatorios.',
                 'empleados': Empleado.objects.all(),
-                'elementos': Elemento.objects.all(),
+                'elementos': Elemento.objects.all().distinct(),
                 'empleado_id': empleado_id,
                 'elementos_ids': elementos_ids,
                 'computador': computador
@@ -353,7 +353,7 @@ def crear_asignacion(request):
             return render(request, 'create_asignacion.html', {
                 'error': 'Empleado no encontrado.',
                 'empleados': Empleado.objects.all(),
-                'elementos': Elemento.objects.all(),
+                'elementos': Elemento.objects.all().distinct(),
                 'empleado_id': empleado_id,
                 'elementos_ids': elementos_ids,
                 'computador': computador
@@ -372,13 +372,16 @@ def crear_asignacion(request):
     
     # Si la solicitud es GET, pasamos los empleados y elementos al contexto
     empleados = Empleado.objects.all()
+
+    # Filtramos los elementos para que solo se muestren una vez por nombre (puedes hacerlo también por otro campo)
     elementos = Elemento.objects.all()
+    # Agrupamos por el nombre del elemento (sin importar la marca o id)
+    elementos_unicos = {e.nombre: e for e in elementos}.values()
+
     return render(request, 'create_asignacion.html', {
         'empleados': empleados,
-        'elementos': elementos
+        'elementos': elementos_unicos  
     })
-
-
 
 @login_required
 def delete_asignacion(request, pk):
